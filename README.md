@@ -7,9 +7,15 @@ Essa aplicação web foi desenvolvida com o propósito de permitir buscas de liv
 
   
   
-<h2>💻 Built with</h2>
-
-Technologies used in the project:
+<h2>💻 Feito em</h2>
 
 *   Laravel
 *   Blade
+
+  <h2>Páginas</h2>
+  *Ao entrar:
+![alt text](https://github.com/fernandondev/consultas-de-livros-laravel/prints/projeto-livro.jpg?raw=true)
+![alt text](https://github.com/fernandondev/consultas-de-livros-laravel/prints/projeto-livro-inicio.jpg?raw=true)
+![alt text](https://github.com/fernandondev/consultas-de-livros-laravel/prints/projeto-livro-detalhes.jpg?raw=true)
+![alt text](https://github.com/fernandondev/consultas-de-livros-laravel/prints/projeto-livro-preview.jpg?raw=true)
+  
