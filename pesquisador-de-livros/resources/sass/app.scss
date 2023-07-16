@@ -1,0 +1,32 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+/* Variables */
+@import 'variables';
+
+/* Bootstrap */
+@import "node_modules/bootstrap/scss/bootstrap";
+
+
+
+.bg-light{
+    background: transparent !important;
+}
+
+
+.barra-navegacao{
+    opacity: 0.8;
+    background-image:url('imagens/biblioteca-fundo.jpg') !important;
+    color: blue;
+}
+.img-livro-navbar{
+    margin-right: 40px;
+}
