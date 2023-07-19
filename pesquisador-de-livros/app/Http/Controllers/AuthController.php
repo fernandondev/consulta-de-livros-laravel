@@ -13,18 +13,25 @@ class AuthController extends Controller
 
     public function __construct(AuthServiceInterface $authService){
 
-        //Declara que o middleware responsável por esse controler será o auth:api e a tarefa de login e register não serão protegidos por esse middleware.
-        $this->middleware('jwt.check', ['except' => ['login', 'register']]);
-
         $this->authService = $authService;
+
     }
 
     /**
      * Retorna a view de login
      */
-    public function pegarViewLogin (){
+    public function pegarViewLogin () {
 
         return view('login');
+
+    }
+
+    /**
+     * Retorna a view de cadastro
+     */
+    public function pegarViewCadastro () {
+
+        return view('cadastro');
 
     }
 
@@ -40,14 +47,26 @@ class AuthController extends Controller
 
         //valida parâmetros, em caso de falha, retorna os erros
         $request->validate ([
+
             'email' => 'required|string|email',
             'password' => 'required|string'
+
+        ],
+        [
+
+            'email.required' => 'O email é obrigatório',
+            'email.string' => 'O email deve ser um texto',
+            'email.email' => 'O parâmetro inserido não é um email válido',
+
+            'password.required' => 'A senha é obrigatória',
+            'password.string' => 'A senha deve ser um texto'
+
         ]);
+
 
        $token = $this->authService->login($request);
 
         if (!$token){
-
 
             //Retorna para a pagina de login, com o erro de credenciais incorretas.
             return redirect()->route('paginaLogin')->with('mensagem', 'Credenciais incorretas');
@@ -72,10 +91,33 @@ class AuthController extends Controller
     {
         //valida parâmetros, em caso de falha, retorna os erros
         $request->validate([
-            'name' => 'required|string|max:255',
+
+            'nome' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6'
+            'password' => 'required|string|min:6',
+            'confirmPassword' => 'required|string|min:6|same:password'
+
+        ],[
+            'nome.required' => 'O nome é obrigatório',
+            'nome.string' => 'O nome deve ser um texto',
+            'nome.max' => 'O nome deve conter menos de 255 caracteres',
+
+            'email.required' => 'O email é obrigatório',
+            'email.string' => 'O email deve ser um texto',
+            'email.email' => 'O parâmetro inserido não é um email válido',
+            'email.unique' => 'O email inserido já foi cadastrado',
+
+            'password.required' => 'A senha é obrigatória',
+            'password.string' => 'A senha deve ser um texto',
+            'password.min' => 'A senha deve ter mais de 6 caracteres',
+
+            'confirmPassword.required' => 'A confirmação de senha é obrigatória',
+            'confirmPassword.string' => 'O confirmação de senha deve ser um texto',
+            'confirmPassword.min' => 'O confirmação de senha deve ter mais de 6 caracteres',
+            'confirmPassword.same' => 'A confirmação de senha deve ser igual à senha'
+
         ]);
+
 
         $this->authService->register($request);
 
@@ -109,12 +151,14 @@ class AuthController extends Controller
         $token = $arrayTokenUser['token'];
 
         return response()->json([
+
             'status' => 'success',
             'user' => $user,
             'authorisation' => [
                 'token' => $token,
                 'type' => 'bearer',
             ]
+
         ]);
 
     }

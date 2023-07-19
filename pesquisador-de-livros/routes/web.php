@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/paginaLogin', [AuthController::class, 'pegarViewLogin'])->name('paginaLogin');
+Route::get('/paginaCadastro', [AuthController::class, 'pegarViewCadastro'])->name('paginaCadastro');
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register']);

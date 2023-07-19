@@ -24,5 +24,6 @@
     <body class="antialiased">
         @yield('pagina-inicial')
         @yield('login')
+        @yield('cadastro')
     </body>
 </html>

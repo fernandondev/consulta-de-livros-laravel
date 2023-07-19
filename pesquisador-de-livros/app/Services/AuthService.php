@@ -45,6 +45,15 @@ class AuthService implements AuthServiceInterface{
             //Coloca o token na sessão
             session()->put('token', $token);
 
+            //Coloca o nome do usuário na sessão
+            try {
+                $nomeUsuario = json_decode (base64_decode( explode( '.', $token )[1] ) ) ->name;
+            } catch (Exception $e) {
+                $nomeUsuario = '';
+            }
+
+            session()->put('nome', $nomeUsuario);
+
         }
 
         return $token;
@@ -54,7 +63,7 @@ class AuthService implements AuthServiceInterface{
     /**
      *Registra efetivamente o usuário e salva no banco de dados a partir da classe repository
      *
-     * @param string $name
+     * @param string $nome
      * @param string $email
      * @param string $password
      *
@@ -64,7 +73,7 @@ class AuthService implements AuthServiceInterface{
     public function register (Request $request)
     {
 
-        $userDto = new UserDto(null, $request->name, $request->email, $request->password);
+        $userDto = new UserDto(null, $request->nome, $request->email, $request->password);
 
         $user = $this->userRepositoryImplementacao->createUser($userDto);
 
