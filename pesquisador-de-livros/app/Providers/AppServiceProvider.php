@@ -2,7 +2,12 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LivroController;
+use App\Repositories\Implementacoes\UserRepositoryImplementacao;
+use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Services\AuthService;
+use App\Services\Interfaces\AuthServiceInterface;
 use App\Services\Interfaces\LivroServiceInterface;
 use App\Services\LivroService;
 use Illuminate\Support\ServiceProvider;
@@ -15,10 +20,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+
         $this->app->when(LivroController::class)
         ->needs(LivroServiceInterface::class)
         ->give(LivroService::class);
+
+        $this->app->when(AuthController::class)
+        ->needs(AuthServiceInterface::class)
+        ->give(AuthService::class);
+
+        $this->app->when(AuthService::class)
+        ->needs(UserRepositoryInterface::class)
+        ->give(UserRepositoryImplementacao::class);
     }
 
     /**

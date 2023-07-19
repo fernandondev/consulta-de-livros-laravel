@@ -22,11 +22,22 @@
 }
 
 
-.barra-navegacao{
+.aba-pesquise-seus-livros{
     opacity: 0.8;
     background-image:url('imagens/biblioteca-fundo.jpg') !important;
     color: blue;
 }
-.img-livro-navbar{
-    margin-right: 40px;
+
+
+.navbar .navbar-nav .nav-link {
+    color: #fff;
 }
+
+.navbar .navbar-nav .nav-link:hover {
+     color: #fbc531;
+    }
+
+.navbar .navbar-nav .active > .nav-link {
+     color: #fbc531;
+    }
+

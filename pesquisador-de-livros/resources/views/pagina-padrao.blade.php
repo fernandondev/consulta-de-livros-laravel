@@ -22,41 +22,7 @@
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
     <body class="antialiased">
-        <div class="barra-navegacao border-bottom border-4 border-light p-5">
-            <div >
-
-                <h1 class="text-center font-weight-bold text-uppercase " style="color:white">Pesquise seus livros</h1>
-            </div>
-            <div class="d-flex justify-content-center bg-light  ">
-
-
-
-                <div>
-                    <nav class="navbar navbar-light" id="navegacao">
-
-                            <form class="form-inline" method="POST" action="/livro" >
-                                {{ csrf_field() }}
-                                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar livro" aria-label="Search" name="nomeLivro">
-                                @if($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach($errors->all() as $error)
-                                                <li>{{$error}}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                                <button class="btn btn-success my-2 my-sm-0" type="submit">Pesquisar</button>
-                            </form>
-
-
-                    </nav>
-                </div>
-
-            </div>
-        </div>
-
-        @yield('livros')
-
+        @yield('pagina-inicial')
+        @yield('login')
     </body>
 </html>
