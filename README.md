@@ -1,15 +1,12 @@
-# consulta-de-livros-laravel
-Essa aplicação web foi desenvolvida com o propósito de permitir buscas de livros, fazendo integração com a api da google
-
 <h1 align="center" id="title">Consulta de livros laravel</h1>
 
-<p id="description">Essa aplicação web foi desenvolvida com o propósito de permitir buscas de livros fazendo integração com a api da google Books Api. A api foi estruturada seguindo os princípios SOLID da programação orientada a objetos, aplicando inversão de dependência, utilização de interfaces, etc.</p>
+<p id="description">Essa aplicação web foi desenvolvida com o propósito de permitir buscas de livros fazendo integração com a api da google Books Api. A api foi estruturada seguindo os princípios <strong>SOLID</strong> da programação orientada a objetos, aplicando <strong>inversão de dependência</strong>, utilização de <strong>heranças</strong>, uso de <strong>Padrão arquitetural</strong>, etc.</p>
 
   <h2> Especificações da api</h2>
 
-*   <p><strong>Arquitetura de software: </strong></p> Layers <p>Layers</p>
-    <img src="prints\esquemas.png" alt="Logo" width="1000" height="800">
-*   Blade
+*   <p><strong>Arquitetura de software: </strong></p><strong>* Layers</strong> </p>
+    <img src="prints\esquema.png" alt="Logo" width="1000" height="800">
+
   
 <h2>💻 Feito em</h2>
 
